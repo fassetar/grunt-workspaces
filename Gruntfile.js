@@ -60,8 +60,10 @@ module.exports = function ( grunt ) {
         sass: {
             dist: {
                 options: {
-                    style: 'compressed'
-                },
+					sourceMap: true,
+					outputStyle: 'compressed'
+											
+				},
                 files: {
                     'dist/css/style.min.css': 'src/scss/style.scss'
                 }
