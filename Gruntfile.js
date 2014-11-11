@@ -1,9 +1,3 @@
-/*
- * Gruntfile.js
- * @author Todd Motto
- * @version 1.0.0
- */
-
 'use strict';
 
 var LIVERELOAD_PORT = 35729;
@@ -39,18 +33,18 @@ module.exports = function ( grunt ) {
 				}
 			}
 		},
-		tag: {
-			banner: "/*!\n" +
-					" * Dev Tools workflow\n" +
-					" * @author Todd Motto\n" +
-					" * @version 1.0.0\n" +
-					" * Copyright 2013.\n" +
-					" */\n"
-		},
+		//tag: {
+		//	banner: "/*!\n" +
+		//			" * Syntax highlighter\n" +
+		//			" * @author Anthony Fassett\n" +
+		//			" * @version 1.0.0\n" +
+		//			" * Copyright 2014.\n" +
+		//			" */\n"
+		//},
 		uglify: {
 			dist: {
 				files: {
-					'dist/js/scripts.min.js': [ 'src/js/scripts.js' ]
+					'dist/js/script.min.js': [ 'src/js/*.js' ]
 				}
 			},
 			options: {
@@ -70,15 +64,30 @@ module.exports = function ( grunt ) {
 			}
 		},
 		htmlmin: {
-		    dist: {
-		        options: {
-		            removeComments: true,
-		            collapseWhitespace: true
-		        },
-		        files: {
-		            'dist/index.html': 'src/index.html'
-		        }
-		    }
+			dist: {
+				options: {
+					removeComments: true,
+					collapseWhitespace: true
+				},
+				files: {
+					'dist/index.html': 'src/index.html'
+				}
+			}
+		},
+		imagemin: {
+			static: {
+				options: {
+					optimizationLevel: 3				
+				}
+			},
+			dynamic: {
+				files: [{
+					expand: true,
+					cwd: 'src/',
+					src: ['**/*.{png,jpg,gif}'],
+					dest: 'dist/'
+				}]
+			}
 		},
 		open: {
 			server: {
@@ -95,8 +104,8 @@ module.exports = function ( grunt ) {
 				tasks: ['sass']
 			},
 			htmlmin: {
-			    files: 'src/{,*/}*.html',
-			    tasks: ['htmlmin']
+				files: 'src/{,*/}*.html',
+				tasks: ['htmlmin']
 			},
 			livereload: {
 				options: {
@@ -116,6 +125,7 @@ module.exports = function ( grunt ) {
 		'sass',
 		'uglify',
 		'htmlmin',
+		'imagemin',
 		'connect:livereload',
 		'open',
 		'watch'
