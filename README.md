@@ -13,7 +13,6 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 
 ```shell
 npm install 
-grunt
 ```
 
 ## Usage examples
