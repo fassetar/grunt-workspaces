@@ -15,6 +15,3 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 npm install 
 ```
 
-## Usage examples
-
-## Release History
