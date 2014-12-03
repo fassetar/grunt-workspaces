@@ -4,4 +4,4 @@ dist
 .tmp
 .sass-cache
 *.log
-src
+dist
