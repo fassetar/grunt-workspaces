@@ -1,15 +1,5 @@
 'use strict';
 
-var LIVERELOAD_PORT = 35729;
-
-var lrSnippet = require( 'connect-livereload' )({
-	port: LIVERELOAD_PORT
-});
-
-var mountFolder = function ( connect, dir ) {
-	return connect.static( require( 'path' ).resolve( dir ) );
-};
-
 module.exports = function ( grunt ) {
 
 
@@ -17,19 +7,19 @@ module.exports = function ( grunt ) {
 	require( 'matchdep' ).filterDev('grunt-*').forEach( grunt.loadNpmTasks );
 
 	grunt.initConfig({
+		config: { // Configurable paths            
+            app: 'dist'           
+        },
 		connect: {
 			options: {
 				port: 9000,
+				livereload: 35729,
 				hostname: 'localhost'
 			},
 			livereload: {
 				options: {
-					middleware: function ( connect ) {
-						return [
-							lrSnippet,
-							mountFolder(connect, 'dist')
-						];
-					}
+					open: true,
+					base: [ '<%= config.app %>' ]
 				}
 			}
 		},
@@ -88,14 +78,9 @@ module.exports = function ( grunt ) {
 					dest: 'dist/'
 				}]
 			}
-		},
-		open: {
-			server: {
-				path: 'http://localhost:<%= connect.options.port %>'
-			}
-		},
+		},		
 		watch: {
-			uglify: {
+			uglify: {				
 				files: 'src/js/{,*/}*.js',
 				tasks: ['uglify']
 			},
@@ -109,13 +94,13 @@ module.exports = function ( grunt ) {
 			},
 			livereload: {
 				options: {
-					livereload: LIVERELOAD_PORT
+					livereload: '<%= connect.options.livereload %>'
 				},
 				files: [
-					'dist/{,*/}*.html',
-					'dist/css/*.css',
-					'dist/js/{,*/}*.js',
-					'dist/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+					'<%= config.app %>/{,*/}*.html',
+					'<%= config.app %>/css/{,*/}*.css',
+					'<%= config.app %>/images/{,*/}*',
+					'<%= config.app %>/js/{,*/}*.js'					
 				]
 			}
 		}
@@ -123,12 +108,9 @@ module.exports = function ( grunt ) {
 
 	grunt.registerTask( 'default' , [
 		'sass',
-		'uglify',
-		'htmlmin',
-		'imagemin',
+		'uglify',		
 		'connect:livereload',
-		'open',
+		'htmlmin',						
 		'watch'
 	]);
-
 };
