@@ -105,23 +105,13 @@ module.exports = function ( grunt ) {
 		}
 	});
 
-	grunt.registerTask('test', [
-		'sass',
-		'uglify',		
-		'connect:livereload',
-		'htmlmin',						
-		'watch'
-	]);
+	grunt.registerTask('test', ['sass','uglify', 'connect:livereload','htmlmin']);
+	grunt.registerTask( 'build' , ['sass','uglify','htmlmin']);
 	grunt.registerTask( 'default' , [
 		'sass',
 		'uglify',		
 		'connect:livereload',
 		'htmlmin',						
 		'watch'
-	]);
-	grunt.registerTask( 'build' , [
-		'sass',
-		'uglify',		
-		'htmlmin',		
-	]);
+	]);	
 };
