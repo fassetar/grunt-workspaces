@@ -2,7 +2,6 @@
 
 module.exports = function ( grunt ) {
 
-
 	pkg: grunt.file.readJSON('package.json'),
 	require( 'matchdep' ).filterDev('grunt-*').forEach( grunt.loadNpmTasks );
 
@@ -106,11 +105,23 @@ module.exports = function ( grunt ) {
 		}
 	});
 
+	grunt.registerTask('test', [
+		'sass',
+		'uglify',		
+		'connect:livereload',
+		'htmlmin',						
+		'watch'
+	]);
 	grunt.registerTask( 'default' , [
 		'sass',
 		'uglify',		
 		'connect:livereload',
 		'htmlmin',						
 		'watch'
+	]);
+	grunt.registerTask( 'build' , [
+		'sass',
+		'uglify',		
+		'htmlmin',		
 	]);
 };

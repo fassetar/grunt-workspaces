@@ -14,5 +14,8 @@
         "grunt-contrib-watch": "~0.6.1",
         "grunt-sass": "^1.0.0",
         "matchdep": "~1.0.0"
-    }
+  },
+  "scripts": {
+        "test": "grunt test"
+  }
 }
