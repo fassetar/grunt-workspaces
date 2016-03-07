@@ -1,7 +1,8 @@
 #grunt-workspaces 
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![Build Status](https://travis-ci.org/fassetar/grunt-workspaces.svg)](https://travis-ci.org/fassetar/grunt-workspaces)
-[![devDependency Status](https://david-dm.org/fassetar/grunt-workspaces/dev-status.svg)](https://david-dm.org/fassetar/grunt-workspaces#info=devDependencies)
+[![devDependency Status](https://david-dm.org/fassetar/grunt-workspaces/dev-status.svg)](https://david-dm.org/fassetar/grunt-workspaces#
+info=devDependencies)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
