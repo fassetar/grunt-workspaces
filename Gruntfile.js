@@ -24,10 +24,10 @@ module.exports = function ( grunt ) {
 		},
 		tag: {
 			banner: "/*!\n" +
-					" * Syntax highlighter\n" +
-					" * @author Anthony Fassett\n" +
+					" * @package name\n" +
+					" * @author YOURNAME \n" +
 					" * @version 1.0.0\n" +
-					" * Copyright 2014.\n" +
+					" * Copyright 2016.\n" +
 					" */\n"
 		},
 		uglify: {
